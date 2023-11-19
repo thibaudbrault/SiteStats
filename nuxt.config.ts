@@ -3,6 +3,7 @@ export default defineNuxtConfig({
     public: {
       NETLIFY_TOKEN: process.env.NETLIFY_TOKEN,
       GITHUB_TOKEN: process.env.GITHUB_TOKEN,
+      GITHUB_NAME: process.env.GITHUB_NAME,
     },
   },
   devtools: { enabled: true },

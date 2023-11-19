@@ -78,7 +78,7 @@ const octokit = new Octokit({
 });
 
 const { data: repos } = await octokit.rest.repos.listForUser({
-  username: "thibaudbrault",
+  username: runtimeConfig.public.GITHUB_NAME,
 });
 </script>
 <style scoped lang="postcss">
