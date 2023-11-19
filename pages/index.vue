@@ -1,14 +1,18 @@
 <template>
-  <main>
-    <p>
-      Lorem ipsum dolor sit amet consectetur, adipisicing elit. Aspernatur
-      ducimus harum fugit, nemo incidunt accusantium commodi sed sit est in
-      provident perferendis reiciendis deserunt cupiditate et. Quis
-      necessitatibus ea unde.
-    </p>
+  <main class="main">
+    <Netlify />
+    <UiSeparator class="separator" />
+    <Github />
+    <UiSeparator class="separator" />
+    <Cloudflare />
   </main>
 </template>
 
-<script setup lang="ts">
-const appConfig = useAppConfig();
-</script>
+<style scoped lang="postcss">
+.main {
+  @apply flex flex-col gap-12;
+}
+.separator {
+  @apply w-11/12 mx-auto;
+}
+</style>
