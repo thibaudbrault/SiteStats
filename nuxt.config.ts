@@ -1,9 +1,14 @@
 export default defineNuxtConfig({
+  runtimeConfig: {
+    public: {
+      NETLIFY_TOKEN: process.env.NETLIFY_TOKEN,
+      GITHUB_TOKEN: process.env.GITHUB_TOKEN,
+    },
+  },
   devtools: { enabled: true },
   typescript: {
     shim: false,
   },
-  modules: ["@nuxtjs/tailwindcss"],
   hooks: {
     "components:dirs": (dirs) => {
       dirs.unshift({
@@ -14,4 +19,5 @@ export default defineNuxtConfig({
       });
     },
   },
+  modules: ["@nuxtjs/tailwindcss", "nuxt-icon"],
 });
