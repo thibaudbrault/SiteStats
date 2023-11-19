@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section class="section" id="github">
     <h2 class="title" style="font-variant: small-caps">GitHub</h2>
     <div>
       <ul class="repos">
@@ -16,22 +16,42 @@
               }}</NuxtLink>
             </div>
             <div class="stats">
-              <p class="stat">
-                <Icon name="octicon:repo-forked-24" />
-                {{ repo.forks_count }}
-              </p>
-              <p class="stat">
-                <Icon name="octicon:star-24" />
-                {{ repo.stargazers_count }}
-              </p>
-              <p class="stat">
-                <Icon name="octicon:eye-24" />
-                {{ repo.watchers_count }}
-              </p>
-              <p class="stat">
-                <Icon name="octicon:issue-opened-24" />
-                {{ repo.open_issues_count }}
-              </p>
+              <UiTooltip>
+                <UiTooltipTrigger>
+                  <p class="stat">
+                    <Icon name="octicon:repo-forked-24" />
+                    <UiTooltipContent>Forks</UiTooltipContent>
+                    {{ repo.forks_count }}
+                  </p>
+                </UiTooltipTrigger>
+              </UiTooltip>
+              <UiTooltip>
+                <UiTooltipTrigger>
+                  <p class="stat">
+                    <Icon name="octicon:star-24" />
+                    <UiTooltipContent>Stars</UiTooltipContent>
+                    {{ repo.stargazers_count }}
+                  </p>
+                </UiTooltipTrigger>
+              </UiTooltip>
+              <UiTooltip>
+                <UiTooltipTrigger>
+                  <p class="stat">
+                    <Icon name="octicon:eye-24" />
+                    <UiTooltipContent>Watchers</UiTooltipContent>
+                    {{ repo.watchers_count }}
+                  </p>
+                </UiTooltipTrigger>
+              </UiTooltip>
+              <UiTooltip>
+                <UiTooltipTrigger>
+                  <p class="stat">
+                    <Icon name="octicon:issue-opened-24" />
+                    <UiTooltipContent>PR + Issues</UiTooltipContent>
+                    {{ repo.open_issues_count }}
+                  </p>
+                </UiTooltipTrigger>
+              </UiTooltip>
             </div>
           </UiCardContent>
           <UiCardFooter>
