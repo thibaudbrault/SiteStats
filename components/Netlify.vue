@@ -63,7 +63,6 @@ const { data: sites, pending: sitesLoading } = await useFetch<NetlifySites[]>(
     },
   }
 );
-console.log("🚀 ~ file: Netlify.vue:58 ~ sites:", sites.value);
 
 const { data: user, pending: userLoading } = await useFetch<NetlifyUser>(
   "https://api.netlify.com/api/v1/user",
