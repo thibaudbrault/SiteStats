@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section class="section" id="netlify">
     <h2 class="title" style="font-variant: small-caps">Netlify</h2>
     <p v-if="sitesLoading || userLoading">Loading...</p>
     <div v-else class="content">
@@ -83,7 +83,7 @@ const { data: user, pending: userLoading } = await useFetch<NetlifyUser>(
   .content {
     @apply flex flex-col gap-4;
     .user {
-      @apply flex gap-4 justify-between items-center;
+      @apply flex gap-4 justify-between items-center w-11/12 mx-auto;
     }
     .sites {
       @apply grid grid-cols-3 gap-8;
