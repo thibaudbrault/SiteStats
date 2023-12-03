@@ -4,7 +4,12 @@ export default defineNuxtConfig({
       NETLIFY_TOKEN: process.env.NETLIFY_TOKEN,
       GITHUB_TOKEN: process.env.GITHUB_TOKEN,
       GITHUB_NAME: process.env.GITHUB_NAME,
+      SITE_URL: process.env.SITE_URL,
     },
+  },
+  app: {
+    pageTransition: { name: "page", mode: "out-in" },
+    layoutTransition: { name: "layout", mode: "out-in" },
   },
   devtools: { enabled: true },
   typescript: {
