@@ -3,7 +3,11 @@
     <Auth />
   </main>
 </template>
-<script setup></script>
+<script setup>
+definePageMeta({
+  layout: "auth",
+});
+</script>
 <style scoped lang="postcss">
 .main {
   @apply flex items-center justify-center h-screen;
