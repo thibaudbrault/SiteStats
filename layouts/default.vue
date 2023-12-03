@@ -9,9 +9,13 @@
     <nav class="nav">
       <div v-if="user" class="connected">
         <NuxtLink :to="Routes.DASHBOARD">Dashboard</NuxtLink>
+        <Dialog>
+          <DialogTrigger>Profile</DialogTrigger>
+          <Profile />
+        </Dialog>
         <button @click="logout">Logout</button>
       </div>
-      <Button variant="secondary" v-else asChild>
+      <Button v-else asChild>
         <NuxtLink :to="Routes.LOGIN">Login</NuxtLink>
       </Button>
     </nav>
