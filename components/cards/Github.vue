@@ -68,6 +68,7 @@
       </ul>
     </div>
   </section>
+  <Separator />
 </template>
 <script setup lang="ts">
 import { Octokit } from "octokit";

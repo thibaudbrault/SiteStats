@@ -47,6 +47,7 @@
       </ul>
     </div>
   </section>
+  <Separator />
 </template>
 
 <script setup lang="ts">

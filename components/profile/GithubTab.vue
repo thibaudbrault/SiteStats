@@ -1,37 +1,33 @@
 <template>
-  <section>
+  <TabsContent value="github">
     <form @submit.prevent="handleGithub">
       <Input
         v-model="github"
-        :placeholder="profile.github_token ?? 'Github token'"
+        :placeholder="profile.github_token ?? 'GitHub token'"
         type="text"
         required
       />
       <Input
         v-model="githubName"
-        :placeholder="profile.github_token ?? 'Github username'"
+        :placeholder="profile.github_token ?? 'GitHub username'"
         type="text"
         required
       />
       <Button>Add</Button>
     </form>
-  </section>
+  </TabsContent>
 </template>
 
 <script setup>
-const supabase = useSupabaseClient();
-const user = useSupabaseUser();
+const props = defineProps({
+  profile: {
+    required: true,
+  },
+});
+const { profile } = props;
+
 const github = ref("");
 const githubName = ref("");
-
-const { data: profile } = await useAsyncData("profiles", async () => {
-  const { data } = await supabase
-    .from("profiles")
-    .select("*")
-    .eq("email", user.value.email)
-    .single();
-  return data;
-});
 
 const handleGithub = async () => {
   const { data, error } = await supabase
@@ -48,4 +44,4 @@ const handleGithub = async () => {
 };
 </script>
 
-<style lang="postcss"></style>
+<style scoped lang="postcss"></style>
