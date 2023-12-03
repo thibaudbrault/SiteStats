@@ -15,10 +15,16 @@ export default defineNuxtConfig({
       dirs.unshift({
         path: "~/components/ui",
         extensions: [".vue"],
-        prefix: "Ui",
         pathPrefix: false,
       });
     },
   },
-  modules: ["@nuxtjs/tailwindcss", "nuxt-icon"],
+  supabase: {
+    redirectOptions: {
+      login: "/login",
+      callback: "/confirm",
+      exclude: ["/"],
+    },
+  },
+  modules: ["@nuxtjs/supabase", "@nuxtjs/tailwindcss", "nuxt-icon"],
 });

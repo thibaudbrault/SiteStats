@@ -3,12 +3,12 @@
     <h2 class="title" style="font-variant: small-caps">GitHub</h2>
     <div>
       <ul class="repos">
-        <UiCard v-for="repo in repos" class="repo">
-          <UiCardHeader>
-            <UiCardTitle class="name">{{ repo.name }}</UiCardTitle>
-            <UiCardDescription>{{ repo.description }}</UiCardDescription>
-          </UiCardHeader>
-          <UiCardContent class="details">
+        <Card v-for="repo in repos" class="repo">
+          <CardHeader>
+            <CardTitle class="name">{{ repo.name }}</CardTitle>
+            <CardDescription>{{ repo.description }}</CardDescription>
+          </CardHeader>
+          <CardContent class="details">
             <div>
               <strong>URL: </strong>
               <NuxtLink :to="repo.html_url" target="_blank" class="url">{{
@@ -16,55 +16,55 @@
               }}</NuxtLink>
             </div>
             <div class="stats">
-              <UiTooltip>
-                <UiTooltipTrigger>
+              <Tooltip>
+                <TooltipTrigger>
                   <p class="stat">
                     <Icon name="octicon:repo-forked-24" />
-                    <UiTooltipContent>Forks</UiTooltipContent>
+                    <TooltipContent>Forks</TooltipContent>
                     {{ repo.forks_count }}
                   </p>
-                </UiTooltipTrigger>
-              </UiTooltip>
-              <UiTooltip>
-                <UiTooltipTrigger>
+                </TooltipTrigger>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
                   <p class="stat">
                     <Icon name="octicon:star-24" />
-                    <UiTooltipContent>Stars</UiTooltipContent>
+                    <TooltipContent>Stars</TooltipContent>
                     {{ repo.stargazers_count }}
                   </p>
-                </UiTooltipTrigger>
-              </UiTooltip>
-              <UiTooltip>
-                <UiTooltipTrigger>
+                </TooltipTrigger>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
                   <p class="stat">
                     <Icon name="octicon:eye-24" />
-                    <UiTooltipContent>Watchers</UiTooltipContent>
+                    <TooltipContent>Watchers</TooltipContent>
                     {{ repo.watchers_count }}
                   </p>
-                </UiTooltipTrigger>
-              </UiTooltip>
-              <UiTooltip>
-                <UiTooltipTrigger>
+                </TooltipTrigger>
+              </Tooltip>
+              <Tooltip>
+                <TooltipTrigger>
                   <p class="stat">
                     <Icon name="octicon:issue-opened-24" />
-                    <UiTooltipContent>PR + Issues</UiTooltipContent>
+                    <TooltipContent>PR + Issues</TooltipContent>
                     {{ repo.open_issues_count }}
                   </p>
-                </UiTooltipTrigger>
-              </UiTooltip>
+                </TooltipTrigger>
+              </Tooltip>
             </div>
-          </UiCardContent>
-          <UiCardFooter>
-            <UiButton
+          </CardContent>
+          <CardFooter>
+            <Button
               variant="secondary"
               asChild
               class="moreBtn"
               style="font-variant: small-caps"
             >
               <NuxtLink>More</NuxtLink>
-            </UiButton>
-          </UiCardFooter>
-        </UiCard>
+            </Button>
+          </CardFooter>
+        </Card>
       </ul>
     </div>
   </section>

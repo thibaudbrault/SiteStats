@@ -9,11 +9,11 @@
         <p>Sites: {{ user?.site_count }}</p>
       </div>
       <ul class="sites">
-        <UiCard v-for="site in sites" class="site">
-          <UiCardHeader>
-            <UiCardTitle class="name">{{ site.name }}</UiCardTitle>
-          </UiCardHeader>
-          <UiCardContent class="details">
+        <Card v-for="site in sites" class="site">
+          <CardHeader>
+            <CardTitle class="name">{{ site.name }}</CardTitle>
+          </CardHeader>
+          <CardContent class="details">
             <p>
               <strong>URL: </strong>
               <NuxtLink :to="site.url" target="_blank" class="url">{{
@@ -32,18 +32,18 @@
                 new Date(site.published_deploy.published_at).toLocaleString()
               }}
             </p>
-          </UiCardContent>
-          <UiCardFooter>
-            <UiButton
+          </CardContent>
+          <CardFooter>
+            <Button
               variant="secondary"
               asChild
               class="moreBtn"
               style="font-variant: small-caps"
             >
               <NuxtLink>More</NuxtLink>
-            </UiButton>
-          </UiCardFooter>
-        </UiCard>
+            </Button>
+          </CardFooter>
+        </Card>
       </ul>
     </div>
   </section>
