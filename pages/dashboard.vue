@@ -1,22 +1,27 @@
 <template>
   <main class="main">
-    <Profile />
-    <Separator class="separator" />
-    <Github />
-    <Separator class="separator" />
+    <Github v-if="profile.github_token && profile.github_username" />
     <Netlify />
-    <Separator class="separator" />
     <Cloudflare />
   </main>
 </template>
 
-<script setup></script>
+<script setup>
+const supabase = useSupabaseClient();
+const user = useSupabaseUser();
+
+const { data: profile } = await useAsyncData("profiles", async () => {
+  const { data } = await supabase
+    .from("profiles")
+    .select("*")
+    .eq("email", user.value.email)
+    .single();
+  return data;
+});
+</script>
 
 <style scoped lang="postcss">
 .main {
   @apply flex flex-col gap-12;
-}
-.separator {
-  @apply w-11/12 mx-auto;
 }
 </style>
