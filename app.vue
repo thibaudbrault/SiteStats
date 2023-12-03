@@ -10,6 +10,6 @@
 
 <style scoped lang="postcss">
 .app {
-  @apply bg-background text-foreground min-h-screen p-8 scroll-smooth;
+  @apply bg-background text-foreground min-h-screen scroll-smooth;
 }
 </style>
