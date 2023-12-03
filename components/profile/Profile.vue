@@ -1,3 +1,20 @@
+<script setup>
+import GithubTab from './GithubTab.vue'
+
+const supabase = useSupabaseClient()
+const user = useSupabaseUser()
+const netlify = ref('')
+
+const { data: profile } = await useAsyncData('profiles', async () => {
+  const { data } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('email', user.value.email)
+    .single()
+  return data
+})
+</script>
+
 <template>
   <DialogContent>
     <DialogHeader>
@@ -5,8 +22,12 @@
     </DialogHeader>
     <Tabs default-value="github">
       <TabsList>
-        <TabsTrigger value="github">GitHub</TabsTrigger>
-        <TabsTrigger value="netlify">Netlify</TabsTrigger>
+        <TabsTrigger value="github">
+          GitHub
+        </TabsTrigger>
+        <TabsTrigger value="netlify">
+          Netlify
+        </TabsTrigger>
       </TabsList>
       <GithubTab :profile="profile" />
       <TabsContent value="netlify">
@@ -21,22 +42,5 @@
     </Tabs>
   </DialogContent>
 </template>
-
-<script setup>
-import GithubTab from "./GithubTab.vue";
-
-const supabase = useSupabaseClient();
-const user = useSupabaseUser();
-const netlify = ref("");
-
-const { data: profile } = await useAsyncData("profiles", async () => {
-  const { data } = await supabase
-    .from("profiles")
-    .select("*")
-    .eq("email", user.value.email)
-    .single();
-  return data;
-});
-</script>
 
 <style lang="postcss"></style>

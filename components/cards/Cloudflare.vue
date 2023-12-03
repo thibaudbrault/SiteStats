@@ -1,9 +1,13 @@
+<script setup></script>
+
 <template>
   <section class="section">
-    <h2 class="title" style="font-variant: small-caps">Cloudflare</h2>
+    <h2 class="title" style="font-variant: small-caps">
+      Cloudflare
+    </h2>
   </section>
 </template>
-<script setup></script>
+
 <style lang="postcss" scoped>
 .section {
   .title {

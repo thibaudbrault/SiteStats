@@ -8,28 +8,28 @@ export default defineNuxtConfig({
     },
   },
   app: {
-    pageTransition: { name: "page", mode: "out-in" },
-    layoutTransition: { name: "layout", mode: "out-in" },
+    pageTransition: { name: 'page', mode: 'out-in' },
+    layoutTransition: { name: 'layout', mode: 'out-in' },
   },
   devtools: { enabled: true },
   typescript: {
     shim: false,
   },
   hooks: {
-    "components:dirs": (dirs) => {
+    'components:dirs': (dirs) => {
       dirs.unshift({
-        path: "~/components/ui",
-        extensions: [".vue"],
+        path: '~/components/ui',
+        extensions: ['.vue'],
         pathPrefix: false,
-      });
+      })
     },
   },
   supabase: {
     redirectOptions: {
-      login: "/login",
-      callback: "/confirm",
-      exclude: ["/"],
+      login: '/login',
+      callback: '/confirm',
+      exclude: ['/'],
     },
   },
-  modules: ["@nuxtjs/supabase", "@nuxtjs/tailwindcss", "nuxt-icon"],
-});
+  modules: ['@nuxtjs/supabase', '@nuxtjs/tailwindcss', 'nuxt-icon'],
+})

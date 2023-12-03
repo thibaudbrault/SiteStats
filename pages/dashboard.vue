@@ -1,3 +1,17 @@
+<script setup>
+const supabase = useSupabaseClient()
+const user = useSupabaseUser()
+
+const { data: profile } = await useAsyncData('profiles', async () => {
+  const { data } = await supabase
+    .from('profiles')
+    .select('*')
+    .eq('email', user.value.email)
+    .single()
+  return data
+})
+</script>
+
 <template>
   <main class="main">
     <Github v-if="profile.github_token && profile.github_username" />
@@ -5,20 +19,6 @@
     <Cloudflare />
   </main>
 </template>
-
-<script setup>
-const supabase = useSupabaseClient();
-const user = useSupabaseUser();
-
-const { data: profile } = await useAsyncData("profiles", async () => {
-  const { data } = await supabase
-    .from("profiles")
-    .select("*")
-    .eq("email", user.value.email)
-    .single();
-  return data;
-});
-</script>
 
 <style scoped lang="postcss">
 .main {

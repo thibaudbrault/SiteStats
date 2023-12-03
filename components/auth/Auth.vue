@@ -1,35 +1,38 @@
+<script setup lang="ts">
+const supabase = useSupabaseClient()
+const runtimeConfig = useRuntimeConfig()
+const email = ref('')
+
+async function signInWithOtp() {
+  const { error } = await supabase.auth.signInWithOtp({
+    email: email.value,
+    options: {
+      emailRedirectTo: `${runtimeConfig.public.SITE_URL}/confirm`,
+    },
+  })
+  if (error)
+    console.error(error)
+}
+</script>
+
 <template>
   <main class="auth">
     <section class="title">
-      <h1 style="font-variant: small-caps">Login</h1>
+      <h1 style="font-variant: small-caps">
+        Login
+      </h1>
       <p>Check your email</p>
     </section>
     <section class="email">
       <Field value="email" label="Email">
         <Input v-model="email" type="email" placeholder="Email" />
       </Field>
-      <Button @click="signInWithOtp">Sign In with E-Mail</Button>
+      <Button @click="signInWithOtp">
+        Sign In with E-Mail
+      </Button>
     </section>
   </main>
 </template>
-
-<script setup lang="ts">
-const supabase = useSupabaseClient();
-const runtimeConfig = useRuntimeConfig();
-const email = ref("");
-
-const signInWithOtp = async () => {
-  const { error } = await supabase.auth.signInWithOtp({
-    email: email.value,
-    options: {
-      emailRedirectTo: `${runtimeConfig.public.SITE_URL}/confirm`,
-    },
-  });
-  if (error) {
-    console.log(error);
-  }
-};
-</script>
 
 <style lang="postcss">
 .auth {

@@ -1,16 +1,15 @@
-<template>
-  <div>Waiting for login...</div>
-</template>
-
 <script setup lang="ts">
-const user = useSupabaseUser();
+const user = useSupabaseUser()
 watch(
   user,
   () => {
-    if (user.value) {
-      return navigateTo(Routes.DASHBOARD);
-    }
+    if (user.value)
+      return navigateTo(Routes.DASHBOARD)
   },
-  { immediate: true }
-);
+  { immediate: true },
+)
 </script>
+
+<template>
+  <div>Waiting for login...</div>
+</template>

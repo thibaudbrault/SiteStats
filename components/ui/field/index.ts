@@ -1,1 +1,1 @@
-export { default as Fierd } from "./Field.vue";
+export { default as Fierd } from './Field.vue'

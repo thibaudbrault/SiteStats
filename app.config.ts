@@ -1,3 +1,3 @@
 export default defineAppConfig({
-  title: "Hello Nuxt",
-});
+  title: 'Hello Nuxt',
+})

@@ -1,7 +1,9 @@
 <template>
   <main class="main">
     <section class="hero">
-      <h1 class="title">Check your sites stats at a glance</h1>
+      <h1 class="title">
+        Check your sites stats at a glance
+      </h1>
     </section>
   </main>
 </template>

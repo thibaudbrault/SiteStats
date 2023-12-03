@@ -1,19 +1,38 @@
+<script setup lang="ts">
+import { Octokit } from 'octokit'
+
+const runtimeConfig = useRuntimeConfig()
+const octokit = new Octokit({
+  auth: runtimeConfig.public.GITHUB_TOKEN,
+})
+
+const { data: repos } = await octokit.rest.repos.listForUser({
+  username: runtimeConfig.public.GITHUB_NAME,
+})
+</script>
+
 <template>
-  <section class="section" id="github">
-    <h2 class="title" style="font-variant: small-caps">GitHub</h2>
+  <section id="github" class="section">
+    <h2 class="title" style="font-variant: small-caps">
+      GitHub
+    </h2>
     <div>
       <ul class="repos">
-        <Card v-for="repo in repos" class="repo">
+        <Card v-for="repo in repos" :key="repo.id" class="repo">
           <CardHeader>
-            <CardTitle class="name">{{ repo.name }}</CardTitle>
+            <CardTitle class="name">
+              {{ repo.name }}
+            </CardTitle>
             <CardDescription>{{ repo.description }}</CardDescription>
           </CardHeader>
           <CardContent class="details">
             <div>
               <strong>URL: </strong>
-              <NuxtLink :to="repo.html_url" target="_blank" class="url">{{
-                repo.html_url
-              }}</NuxtLink>
+              <NuxtLink :to="repo.html_url" target="_blank" class="url">
+                {{
+                  repo.html_url
+                }}
+              </NuxtLink>
             </div>
             <div class="stats">
               <Tooltip>
@@ -57,7 +76,7 @@
           <CardFooter>
             <Button
               variant="secondary"
-              asChild
+              as-child
               class="moreBtn"
               style="font-variant: small-caps"
             >
@@ -70,18 +89,7 @@
   </section>
   <Separator />
 </template>
-<script setup lang="ts">
-import { Octokit } from "octokit";
 
-const runtimeConfig = useRuntimeConfig();
-const octokit = new Octokit({
-  auth: runtimeConfig.public.GITHUB_TOKEN,
-});
-
-const { data: repos } = await octokit.rest.repos.listForUser({
-  username: runtimeConfig.public.GITHUB_NAME,
-});
-</script>
 <style scoped lang="postcss">
 .section {
   .title {

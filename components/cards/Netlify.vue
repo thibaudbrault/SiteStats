@@ -1,7 +1,37 @@
+<script setup lang="ts">
+import type { NetlifySites, NetlifyUser } from '@/types/queries'
+
+const runtimeConfig = useRuntimeConfig()
+
+const { data: sites, pending: sitesLoading } = await useFetch<NetlifySites[]>(
+  'https://api.netlify.com/api/v1/sites',
+  {
+    headers: {
+      'User-Agent': 'SiteStats',
+      'Authorization': `Bearer ${runtimeConfig.public.NETLIFY_TOKEN}`,
+    },
+  },
+)
+
+const { data: user, pending: userLoading } = await useFetch<NetlifyUser>(
+  'https://api.netlify.com/api/v1/user',
+  {
+    headers: {
+      'User-Agent': 'SiteStats',
+      'Authorization': `Bearer ${runtimeConfig.public.NETLIFY_TOKEN}`,
+    },
+  },
+)
+</script>
+
 <template>
-  <section class="section" id="netlify">
-    <h2 class="title" style="font-variant: small-caps">Netlify</h2>
-    <p v-if="sitesLoading || userLoading">Loading...</p>
+  <section id="netlify" class="section">
+    <h2 class="title" style="font-variant: small-caps">
+      Netlify
+    </h2>
+    <p v-if="sitesLoading || userLoading">
+      Loading...
+    </p>
     <div v-else class="content">
       <div class="user">
         <p>Name: {{ user?.full_name }}</p>
@@ -9,22 +39,28 @@
         <p>Sites: {{ user?.site_count }}</p>
       </div>
       <ul class="sites">
-        <Card v-for="site in sites" class="site">
+        <Card v-for="site in sites" :key="site.id" class="site">
           <CardHeader>
-            <CardTitle class="name">{{ site.name }}</CardTitle>
+            <CardTitle class="name">
+              {{ site.name }}
+            </CardTitle>
           </CardHeader>
           <CardContent class="details">
             <p>
               <strong>URL: </strong>
-              <NuxtLink :to="site.url" target="_blank" class="url">{{
-                site.url
-              }}</NuxtLink>
+              <NuxtLink :to="site.url" target="_blank" class="url">
+                {{
+                  site.url
+                }}
+              </NuxtLink>
             </p>
             <p>
               <strong>Admin URL: </strong>
-              <NuxtLink :to="site.url" target="_blank" class="url">{{
-                site.admin_url
-              }}</NuxtLink>
+              <NuxtLink :to="site.url" target="_blank" class="url">
+                {{
+                  site.admin_url
+                }}
+              </NuxtLink>
             </p>
             <p>
               <strong>Latest deploy: </strong>
@@ -36,7 +72,7 @@
           <CardFooter>
             <Button
               variant="secondary"
-              asChild
+              as-child
               class="moreBtn"
               style="font-variant: small-caps"
             >
@@ -49,32 +85,6 @@
   </section>
   <Separator />
 </template>
-
-<script setup lang="ts">
-import type { NetlifySites } from "@/types/queries";
-import type { NetlifyUser } from "@/types/queries";
-const runtimeConfig = useRuntimeConfig();
-
-const { data: sites, pending: sitesLoading } = await useFetch<NetlifySites[]>(
-  "https://api.netlify.com/api/v1/sites",
-  {
-    headers: {
-      "User-Agent": "SiteStats",
-      Authorization: `Bearer ${runtimeConfig.public.NETLIFY_TOKEN}`,
-    },
-  }
-);
-
-const { data: user, pending: userLoading } = await useFetch<NetlifyUser>(
-  "https://api.netlify.com/api/v1/user",
-  {
-    headers: {
-      "User-Agent": "SiteStats",
-      Authorization: `Bearer ${runtimeConfig.public.NETLIFY_TOKEN}`,
-    },
-  }
-);
-</script>
 
 <style scoped lang="postcss">
 .section {
